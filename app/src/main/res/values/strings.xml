@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Motivation</string>
+    <string name="nova_frase">Nova Frase</string>
+    <string name="frases">Motivation Motivation</string>
+    <string name="validation">Informe seu nome</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
