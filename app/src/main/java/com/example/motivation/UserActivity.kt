@@ -1,9 +1,11 @@
 package com.example.motivation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import android.preference.PreferenceManager
 import android.widget.Toast
 import com.example.motivation.databinding.ActivityUserBinding
 
@@ -15,22 +17,24 @@ class UserActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        binding.btnAvancar.setOnClickListener {
-            validation()
-        }
+        var myPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        var myEditor: SharedPreferences.Editor = myPreferences.edit()
 
-    }
+        var username = myPreferences.getString("USER_NAME", "")
 
-    fun validation(){
-        var name = binding.editUser.text.toString()
-        if (name != "") {
-
-            SecurityPreferences(this).storeString("USER_NAME", name)
-
+        if (username != "") {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        } else {
-            Toast.makeText(this, R.string.validation, Toast.LENGTH_SHORT).show()
         }
+
+        binding.btnAvancar.setOnClickListener {
+            var name = binding.editUser.text.toString()
+            myEditor.putString("USER_NAME", "$name")
+            myEditor.apply()
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
     }
+
 }
