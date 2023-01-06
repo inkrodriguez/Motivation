@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.Toast
 import com.example.motivation.databinding.ActivityUserBinding
+import com.example.motivation.fragments.Const
 
 class UserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserBinding
@@ -20,7 +21,7 @@ class UserActivity : AppCompatActivity() {
         var myPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         var myEditor: SharedPreferences.Editor = myPreferences.edit()
 
-        var username = myPreferences.getString("USER_NAME", "")
+        var username = myPreferences.getString(Const.KEY.USER_NAME, "")
 
         if (username != "") {
             startActivity(Intent(this, MainActivity::class.java))
@@ -29,7 +30,7 @@ class UserActivity : AppCompatActivity() {
 
         binding.btnAvancar.setOnClickListener {
             var name = binding.editUser.text.toString()
-            myEditor.putString("USER_NAME", "$name")
+            myEditor.putString(Const.KEY.USER_NAME, "$name")
             myEditor.apply()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
