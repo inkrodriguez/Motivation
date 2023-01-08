@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             binding.imgAll.id -> {
                 binding.imgAll.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                categoryId = 1
                 for (item in frases) {
                     var id = item.categoryId
                     var listaRandomizada = frases.random()
