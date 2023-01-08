@@ -19,10 +19,23 @@
         android:id="@+id/bodyFragment"
         android:name="com.example.motivation.fragments.BodyFragment"
         android:label="fragment_body"
-        tools:layout="@layout/fragment_body" />
+        tools:layout="@layout/fragment_body" >
+        <action
+            android:id="@+id/action_bodyFragment_to_happyFragment"
+            app:destination="@id/happyFragment" />
+    </fragment>
     <activity
         android:id="@+id/userActivity"
         android:name="com.example.motivation.UserActivity"
         android:label="activity_user"
         tools:layout="@layout/activity_user" />
+    <fragment
+        android:id="@+id/happyFragment"
+        android:name="com.example.motivation.fragments.HappyFragment"
+        android:label="fragment_happy"
+        tools:layout="@layout/fragment_happy" >
+        <action
+            android:id="@+id/action_happyFragment_to_bodyFragment"
+            app:destination="@id/bodyFragment" />
+    </fragment>
 </navigation>
